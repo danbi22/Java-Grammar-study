@@ -15,6 +15,7 @@ public class BusinessPerson extends Person {
 	public BusinessPerson(String company) {
 //		super();
 		this.company = company;
+		
 		System.out.println("BusinessPerson(company) 생성자 호출.");
 	}
 	
@@ -25,6 +26,7 @@ public class BusinessPerson extends Person {
 	public BusinessPerson(String name, String company) {
 		super(name); // 부모의 생성자를 호출. 명시적 호출
 		this.company = company;
+//		super(name); 
 		System.out.println("BusinessPerson(name, company) 생성자 호출.");
 	}
 	
