@@ -17,7 +17,7 @@ public class HybridCar extends Car{
 	@Override // 애너테이션(annotation) // 주석은 아니고 자바 컴파일러에게 Override라는 것을 알려준다.
 	// 애너테이션의 역할은 자바 컴파일러에게 override인지 문법적으로 한번 더 확인해라 라는 문구
 	public void drive() {
-		System.out.printf("하이브리드 자동차 운전: 속력=%.1f, 연료=%.1f, 배터리=%d", super.getSpeed(), super.getFuel(), this.battery);
+		System.out.printf("하이브리드 자동차 운전: 속력=%.1f, 연료=%.1f, 배터리=%d%n", super.getSpeed(), super.getFuel(), this.battery);
 		
 //		super.drive(); // 상위 타입 객체가 가지고 있는 (overrride 전) 메서드를 호출
 //		System.out.println("--- 배터리="+battery);
