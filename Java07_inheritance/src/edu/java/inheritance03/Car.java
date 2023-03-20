@@ -21,6 +21,6 @@ public class Car {
 	}
 	
 	public void drive() {
-		System.out.printf("자동차 운전: 속력=%f, 연료=%f%n", this.speed, this.fuel);
+		System.out.printf("자동차 운전: 속력=%.1f, 연료=%.1f%n", this.speed, this.fuel);
 	}
 }
