@@ -60,6 +60,9 @@ public class InheritanceMain06 {
 		User u1 = new User("dbekgks", "123");
 		User u2 = new User("dbekgks", "456");
 		
+		System.out.println(u1.toString());
+		System.out.println(u2.toString());
+		
 		System.out.println("User 메서드: "+u1.equals(u2));
 		System.out.println("u1 hashCode: "+u1.hashCode());
 		System.out.println("u2 hashCode: "+u2.hashCode());
