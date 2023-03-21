@@ -46,19 +46,36 @@ public class Point {
 	}
 
 	@Override
-	public boolean equals(Object obj) { // true 혹은 false를 리턴(boolean) 파라미터로를 객체를 가져옴 
-		if (this == obj) // this와 obj가 같은 주소값을 가지고 있으면~
+	public boolean equals(Object obj) {
+		if (this == obj)
 			return true;
-		if (obj == null) // obj가 주소값을 가지고 있지 않으면. 객체를 참조하고 있지 않으면
+		if (obj == null)
 			return false;
-		if (getClass() != obj.getClass()) // 클래스 이름이 다르면  
+		if (getClass() != obj.getClass())
 			return false;
-		// 클래스 이름이 같으면 -> casting을 할 수 있음.
 		Point other = (Point) obj;
 		return x == other.x && y == other.y;
-		// 주소값을 비교하는 것이 아니라 값과 이름이 같으면 같다라고 하자로 재정의(Override)
 	}
-	
+
+	// hashCode() 메서드는 반드시 int 타입을 리턴
+	// equals()가 true를 리턴하는 두 객체는 hashCode의 리턴 값이 같아야 함.
+
+
+//	@Override
+//	public boolean equals(Object obj) { // true 혹은 false를 리턴(boolean) 파라미터로를 객체를 가져옴 
+//		if (this == obj) // this와 obj가 같은 주소값을 가지고 있으면~
+//			return true;
+//		if (obj == null) // obj가 주소값을 가지고 있지 않으면. 객체를 참조하고 있지 않으면
+//			return false;
+//		if (getClass() != obj.getClass()) // 클래스 이름이 다르면  
+//			// getClass 어떤 타입의 객체인지를 알려줌.
+//			return false;
+//		// 클래스 이름이 같으면 -> casting을 할 수 있음.
+//		Point other = (Point) obj;
+//		return x == other.x && y == other.y;
+//		// 주소값을 비교하는 것이 아니라 값과 이름이 같으면 같다라고 하자로 재정의(Override)
+//	}
+
 	
 	
 }
