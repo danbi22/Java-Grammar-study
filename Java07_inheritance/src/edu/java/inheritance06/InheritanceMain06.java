@@ -59,13 +59,21 @@ public class InheritanceMain06 {
 		
 		User u1 = new User("dbekgks", "123");
 		User u2 = new User("dbekgks", "456");
+		User u3 = new User(null,null);
 		
-		System.out.println(u1.toString());
-		System.out.println(u2.toString());
+		System.out.println("u1:"+u1);
+		System.out.println("u2:"+u2);
+		System.out.println("u3:"+u3); // println메서드 안에서 toSting을 불러와 overrid 된 toString이 출력되었다.
+		
+		System.out.println("==연산자: "+(u1 == u2));
 		
 		System.out.println("User 메서드: "+u1.equals(u2));
+		System.out.println("User 메서드: "+u1.equals(u3));
+		System.out.println("User 메서드: "+u3.equals(u2));
 		System.out.println("u1 hashCode: "+u1.hashCode());
 		System.out.println("u2 hashCode: "+u2.hashCode());
+		System.out.println("u3 hashCode: "+u3.hashCode());
+		
 		
 		
 		

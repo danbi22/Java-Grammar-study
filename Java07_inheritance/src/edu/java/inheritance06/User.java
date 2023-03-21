@@ -41,6 +41,7 @@ public class User {
 	// equals() override: 두 객체의 userId가 같으면 true, 그렇지 않으면 false
 	// hashCode() override
 	@Override
+	// equals()의 리턴 값이 true이면 hashCode()의 리턴 값이 같다. 
 	public int hashCode() {
 		return Objects.hash(userId);
 	}
@@ -56,6 +57,7 @@ public class User {
 //		User other = (User) obj;
 //		return Objects.equals(userId, other.userId);
 //	}
+	// charAt(0) 인덱스 0번에 있는 문자를 리턴
 	
 	@Override
 	public boolean equals(Object obj) { // Object타입을 받는다면 Car타입 TV타입 User타입... 등 Object를 상속받는 모든 클래스를 받을 수 있다.
@@ -64,6 +66,7 @@ public class User {
 			User other = ((User) obj); // obj를 Object로만 보고있기 때문에 User로 캐스팅을 한다.
 			if (this.userId != null && userId.equals(other.userId)) { // userId는 String타입으로 String을 비교하는 문장이다.
 				// userId가 null이라면 null일때 메서드를 부르면 nullPointException이 일어난다.
+				// userId가 null임을 확인하기 때문에 nullPointException이 일어나지 않고 if문을 실행하지 않고 나가 false가 출력된다.
 				result = true;
 			}
 		}
