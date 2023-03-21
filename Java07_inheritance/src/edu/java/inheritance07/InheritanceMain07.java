@@ -22,7 +22,7 @@ abstract class Animal{ // 클래스는 파일당 하나만 만드는 것이 좋�
 	
 }
 
-public class InheritanceMain01 {
+public class InheritanceMain07 {
 	
 	public static void main(String[] args) {
 		
