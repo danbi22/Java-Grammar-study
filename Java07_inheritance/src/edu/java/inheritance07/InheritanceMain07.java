@@ -16,10 +16,10 @@ package edu.java.inheritance07;
 // 추상메서드와 추상클래스는 상속하는 하위 클래스에서 메서드 구현(override)을 목적으로 함.
 // 하위클래스에서 이런 메서드를 만들어 줬으면 할 때 추상메서드를 사용한다.
 
-abstract class Animal{ // 클래스는 파일당 하나만 만드는 것이 좋다. // 추상메서드의 수식어 ab
-//	public void move(); // 메서드의 바디({})가 없다. 추상메서드
+abstract class Animal{ // 클래스는 파일당 하나만 만드는 것이 좋다. // 추상메서드의 수식어 abstract
+//	public void move(); // 메서드의 바디({})가 없다. 추상메서드는 abstract를 붙여주어야한다. 
 	public abstract void move(); // 추상메서드는 바디를 가질 수 없다. abstract는 수식어이기 때문에 리턴타입 앞에 붙어야한다.
-	// 움직인다는 것도 추상적 뱀은 기고, 사자는 네발로 걷고, 인간은 두발로 걷고, 새는 난다.
+	// 움직인다는 것도 추상적이다. 뱀은 기고, 사자는 네발로 걷고, 인간은 두발로 걷고, 새는 난다.
 	// 
 }
 class Dog extends Animal{
