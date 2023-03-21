@@ -63,7 +63,7 @@ public class InheritanceMain06 {
 		
 		System.out.println("u1:"+u1);
 		System.out.println("u2:"+u2);
-		System.out.println("u3:"+u3); // println메서드 안에서 toSting을 불러와 overrid 된 toString이 출력되었다.
+		System.out.println("u3:"+u3); // println메서드 안에서 toSting을 불러와 override 된 toString이 출력되었다.
 		
 		System.out.println("==연산자: "+(u1 == u2));
 		
@@ -73,6 +73,7 @@ public class InheritanceMain06 {
 		System.out.println("u1 hashCode: "+u1.hashCode());
 		System.out.println("u2 hashCode: "+u2.hashCode());
 		System.out.println("u3 hashCode: "+u3.hashCode());
+		
 		
 		
 		
