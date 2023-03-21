@@ -35,15 +35,17 @@ enum Time{ // 클래스의 한종류 수식어를 붙일 수 있다.
 public class EnumTestMain {
 	
 	public static void main(String[] args) {
+	
 		Time t = Time.PM;
 		System.out.println(t); // am.toString()의 리턴 값을 출력
 		System.out.println(t.name()); // toString의 다른 메서드 // Enum 클래스에서 상속받은 메서드
 		System.out.println(t.ordinal()); // "
 		System.out.println(Time.values()); // Enum 클래스에서 상속받은 static 메서드
-		Time[] times = Time.values();
+		Time[] times = Time.values(); 
 		for (Time x : times) {
 			System.out.println(x + ":" + x.getMeaning());
 		}
+		
 	}
 
 }
