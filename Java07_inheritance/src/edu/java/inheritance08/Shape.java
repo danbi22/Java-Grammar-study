@@ -20,7 +20,7 @@ public abstract class Shape { // abstract 생성자가 있으나 호출 불가
 	// 일반 메서드를 만들 수 없는 것은 아니다.
 	// final 메서드 - 하위 클래스에서 override(재정의)하지 못하도록 하기 위해서.
 	public final void draw() {
-		String info = String.format("%s: 넓이=%.1f, 둘레=%.1f", this.type, area(), perimeter());
+		String info = String.format("%s: 넓이=%.1f, 둘레=%.1f", type, area(), perimeter());
 		System.out.println(info);
 	}
 }

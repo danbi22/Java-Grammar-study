@@ -6,6 +6,16 @@ public class InheritanceMain08 {
 		
 //		Shape shape = new Shape("직사각형"); 
 //		 추상 클래스는 생성자를 생성할 수 없다. 보이지만 쓸 수 없다. 객체를 생성할 수 없다.
+		
+		Shape[] shapes = {
+				new Rectangle("직사각형", 3, 4),
+				new Circle("원", 10)
+		};
+		
+		for (Shape s : shapes) {
+			s.draw();
+		}
+		
 		Rectangle rectangle = new Rectangle("직사각형", 4, 5);
 		rectangle.draw();
 		
