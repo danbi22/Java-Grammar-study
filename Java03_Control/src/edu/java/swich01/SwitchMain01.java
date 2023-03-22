@@ -4,7 +4,7 @@ public class SwitchMain01 {
 
 	public static void main(String[] args) {
 		
-		String time = "점심";
+		String time = "간식";
 		
 		switch(time) {
 		case "아침":
