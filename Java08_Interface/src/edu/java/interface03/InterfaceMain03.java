@@ -24,6 +24,7 @@ interface I extends E, F {} // 다중상속이 가능하다.
 //-> 슈퍼인터페이스는 인터페이스여야한다. 상위 인터페이스는 인터페이스여야한다. 문법 오류. 인터페이스는 머만 가능한데 클래스에 있는 다른것들을 상속받을 수 없다.
 
 interface Buyer {
+	static void test() {}
 	void buy(); // public abstract 메서드
 	
 	// default (인스턴스)메서드: 객체를 생성한 뒤 사용가능 
@@ -33,6 +34,7 @@ interface Buyer {
 }
 
 interface Seller{
+	static void test() {}
 	void sell(); // public abstract 메서드
 	
 	// default (인스턴스)메서드
@@ -52,7 +54,7 @@ class User implements Buyer, Seller {
 	public void sell() {
 		System.out.println("판매");
 	}
-	// 중복되는 default, static 메서드가 2개의 인터페이스에 있는 경우에는 반드시 override
+	// 중복되는 default 메서드가 2개의 인터페이스에 있는 경우에는 반드시 override
 	@Override
 	public void register() {
 		// 상위인터페이스.super.메서드() 호출
