@@ -26,6 +26,8 @@ import java.util.Scanner;
  * 			|__ Exception
  * 					|__RuntimeException, ...
  * 							|__ ArithmeticException, NullPointerException, ArrayIndexOutOfBoundsException
+ * 
+ * - catch 블록이 여러개일 떄는 하위 타입의 예외들을 먼저 catch 하고, 상위 타입의 예외들은 나중에 catch해야 함.
  */
 public class ExceptionMain02 {
 	
