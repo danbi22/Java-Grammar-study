@@ -10,6 +10,13 @@ public class ExceptionMain04{
 		// catch (Exception1 | Exception2 | Exception3 | ... 변수) { ... }
 		// multi-catch 블록은 상속관계(Super-Sub 관계)에 있는 예외 클래스들은 함께 사용할 수 없음
 		
+		// parseInt()의 설명 int java.lang.Integer.parseInt(String s) throws NumberFormatException
+		// int를 리턴 java.lang패키지의 Integer 클래스에 parseInt(String s)메서드
+		// throws NumberFormatException: 예외가 발생할 수 있다. // NumberFormatException이 발생할 수 있다. 
+		// try-catch가 없어도 실행이 되는가?
+		// parseInt()는 try-catch가 없어도 실행이된다.
+		
+		
 		Scanner sc = new Scanner(System.in);
 		
 		try {

@@ -42,8 +42,10 @@ public class EnumTestMain {
 		System.out.println(t.name()); // toString의 다른 메서드 // Enum 클래스에서 상속받은 메서드
 		System.out.println(t.ordinal()); // "
 		System.out.println(Time.values()); // Enum 클래스에서 상속받은 static 메서드
+		
 		Time[] times = Time.values(); 
 		for (Time x : times) {
+			System.out.println(x.ordinal());
 			System.out.println(x + ":" + x.getMeaning());
 		}
 		
