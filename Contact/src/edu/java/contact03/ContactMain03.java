@@ -34,6 +34,7 @@ public class ContactMain03 {
 				app.selectAllContacts();
 				break;
 			case READ_BY_INDEX:
+				app.selectContactByIndex();
 				break;
 			case UPDATE:
 				break;
@@ -81,6 +82,21 @@ public class ContactMain03 {
 			System.out.println(">>> 새 연락처 저장 성공");
 		} else {
 			System.out.println(">>> 새 연락처 저장 실패");
+		}
+	}
+	
+	private void selectContactByIndex() {
+		System.out.println("\n ------- 인덱스로 검색하기 기능 -------");
+		System.out.print("검색할 연락처 인덱스를 입력하세요> ");
+		int index = inputNumber();
+		
+		Contact contact = dao.read(index);
+		// View에서는 Controller의 read()메서드를 호출해서 인덱스 검색 결과를 리턴받음.
+		
+		if (contact != null) {
+			System.out.println(contact);
+		} else {
+			System.out.println("해당 인덱스에는 연락처 정보가 없습니다.");
 		}
 	}
 
