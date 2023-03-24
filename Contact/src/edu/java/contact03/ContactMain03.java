@@ -37,8 +37,10 @@ public class ContactMain03 {
 				app.selectContactByIndex();
 				break;
 			case UPDATE:
+				app.updateContact();
 				break;
 			case DELETE:
+				app.deleteContact();
 				break;			
 			default:
 				System.out.println("메인 메뉴 번호를 확인하세요...");
@@ -47,6 +49,42 @@ public class ContactMain03 {
 		System.out.println("*** 프로그램 종료 ***");
 	}
 	
+	private void deleteContact() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void updateContact() {
+		System.out.println("\n------- 연락처 업데이트 -------");
+		System.out.print("수정할 연락처의 인덱스를 입력하세요> ");
+		int index = inputNumber();
+		
+		if (!dao.isValidIndex(index)) { // 유효하지 않은 인덱스이면
+			System.out.println(">>> 해당 인덱스에는 연락처 정보가 없습니다.");
+			return; // 메서드 종료
+		} 
+	
+		Contact before = dao.read(index);
+		System.out.println(">>> 수정 전: "+before);
+		
+		System.out.println("이름 입력> ");
+		String name = scanner.nextLine();
+		System.out.println("전화번호 입력> ");
+		String phone = scanner.nextLine();
+		System.out.println("이메일 입력> ");
+		String email = scanner.nextLine();
+		
+		Contact after = new Contact(0, name, phone, email);
+		
+		int result = dao.update(index, after);
+		
+		if (result == 0) {
+			System.out.println("연락처 업데이트 실패");
+		} else {
+			System.out.println("연락처 업데이트 실패");
+		}
+	}
+
 	private void selectAllContacts() {
 		System.out.println("\n------- 연락처 전체 목록 --------");
 		
