@@ -50,8 +50,18 @@ public class ContactMain03 {
 	}
 	
 	private void deleteContact() {
-		// TODO Auto-generated method stub
+		System.out.println("\n------ 연락처 삭제 -------");
+		System.out.print("삭제할 연락처 인덱스를 입력하세요> ");
+		int index = inputNumber();
 		
+		int result = dao.delete(index);
+		
+		if (result == 0) {
+			System.out.println("연락처 삭제 실패");
+			return;
+		} 
+		
+		System.out.println("연락처 삭제 성공");	
 	}
 
 	private void updateContact() {
