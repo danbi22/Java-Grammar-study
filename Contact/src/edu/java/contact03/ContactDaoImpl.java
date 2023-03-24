@@ -93,8 +93,16 @@ public class ContactDaoImpl implements ContactDao{
 
 	@Override
 	public int delete(int index) {
-		// TODO Auto-generated method stub
-		return 0;
+		if (!isValidIndex(index)) {
+			return 0;
+		}
+		for (int i = index+1; i < count; i++) {
+			contacts[index] = contacts[i];
+			index++;
+		}
+		count--;
+		
+		return 1;
 	}
 
 }
