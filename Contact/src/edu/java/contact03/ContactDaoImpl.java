@@ -80,8 +80,15 @@ public class ContactDaoImpl implements ContactDao{
 
 	@Override
 	public int update(int index, Contact contact) {
-		// TODO Auto-generated method stub
-		return 0;
+		if (isValidIndex(index)) { // 유효한 인덱스이면
+//			contacts[index].setName(contact.getName());
+//			contacts[index].setPhone(contact.getPhone());
+//			contacts[index].setEmail(contact.getEmail());
+			contacts[index] = contact;
+			return 1;
+		} else { // 유효하지 않은 인덱스이면
+			return 0;
+		}
 	}
 
 	@Override
