@@ -71,8 +71,11 @@ public class ContactDaoImpl implements ContactDao{
 
 	@Override
 	public Contact read(int index) {
-		// TODO Auto-generated method stub
-		return null;
+		if (isValidIndex(index)) {
+			return contacts[index];
+		} else {
+			return null;
+		}
 	}
 
 	@Override
