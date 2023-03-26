@@ -73,7 +73,7 @@ public class postModel {
 	
 	@Override
 	public String toString() {
-		return String.format("post(pid=%d, title=%s, content=%s, author=%s, createdTime=%s, modifiedTime=%s", 
+		return String.format("post(pid=%d, title=%s, content=%s, author=%s, createdTime=%s, modifiedTime=%s)", 
 				pid, title, content, author, createdTime, modifiedTime);
 	}
 	
