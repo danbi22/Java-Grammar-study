@@ -91,7 +91,7 @@ public class PostDaoImpl implements postDao {
 	/**
 	 * 어떤 인덱스가 검색, 수정, 삭제할 때 사용 가능한 범위 안에 있는 인덱스인 지를 리턴
 	 * @param index  유효한 인덱스인 지 검사할 인덱스
-	 * @return 사용가능한 인덱스는 true, 그렇지 않으면 false
+	 * @return 사용가능한 인덱스는 true, 그렇지 않으면 false  
 	 */
 	public boolean isValidIndex(int index) {
 		return index >= 0 && index < count;
