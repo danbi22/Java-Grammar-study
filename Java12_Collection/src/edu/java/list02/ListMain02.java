@@ -11,7 +11,7 @@ public class ListMain02 {
 		// 정수를 저장하는 LinkedList 타입 객체 생성
 		// List의 원소 타입은 자바의 기본 타입을 사용할 수 없음
 		// 기본 타입 대신에 wrapper 클래스를 사용해야 함!
-		LinkedList<Integer> numberss = new LinkedList<>();
+
 		
 		// LinkedList와 ArrayList는 원소 추가(add)/삭제(remove)/검색(get) 메서드 이름과 사용법이 동일.
 		
@@ -52,5 +52,12 @@ public class ListMain02 {
 		}
 		
 		System.out.println(evenSquares);
+		
+		// Iterator 사용
+		Iterator<Integer> itr = evenSquares.iterator();
+		while (itr.hasNext()) {
+			System.out.print(itr.next()+", ");
+		}
+		
 	}
 }
