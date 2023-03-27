@@ -2,8 +2,11 @@ package edu.java.list03;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+
+
 
 public class ListMain03 {
 	
@@ -18,6 +21,15 @@ public class ListMain03 {
 		// 리스트 subjects에서 5글자 이상인 문자열들만 저장하는 리스트를 만들고 출력.
 		LinkedList<String> inFiveWord = new LinkedList<>();
 		for (String s : subjects) {
+			if (s.length() >= 5) {
+				inFiveWord.add(s);
+			}
+		}
+		System.out.println(inFiveWord);
+		
+		Iterator<String> itr = subjects.iterator();
+		while (itr.hasNext()) {
+			String s = itr.next();
 			if (s.length() >= 5) {
 				inFiveWord.add(s);
 			}
@@ -46,7 +58,9 @@ public class ListMain03 {
 			} else {
 				sex.add("Female");
 			}
+		sex.add((n == 0) ? "male" : "female");
 		}
+		
 		
 		System.out.println(sex);
 	}
