@@ -8,6 +8,7 @@ public class ListMain04 {
 	Scanner sc = new Scanner(System.in);
 	
 	public static void main(String[] args) {
+		User user = new User();
 		
 		ListMain04 main04 = new ListMain04();
 		
@@ -25,6 +26,15 @@ public class ListMain04 {
 		
 		// ArrayList 내용을 출력.
 		System.out.println(users);
+		
+		// 리스트 users에서 인덱스 0번 위치의 원소를 삭제
+		users.remove(0);
+		
+		System.out.println(users);
+		
+		// id가 "guest"인 User 객체를 리스트에서 삭제
+		
+		
 	}
 
 
