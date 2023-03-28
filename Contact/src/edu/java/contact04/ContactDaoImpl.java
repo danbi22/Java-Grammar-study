@@ -62,8 +62,7 @@ public class ContactDaoImpl implements ContactDao{
 //			contacts[index].setName(contact.getName());
 //			contacts[index].setPhone(contact.getPhone());
 //			contacts[index].setEmail(contact.getEmail());
-			contacts.remove(index);
-			contacts.add(index, contact);
+			contacts.set(index, contact);
 			return 1;
 		} else { // 유효하지 않은 인덱스이면
 			return 0;
