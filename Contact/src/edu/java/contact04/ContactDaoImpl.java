@@ -1,6 +1,6 @@
 package edu.java.contact04;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 import edu.java.contact.model.Contact;
@@ -24,7 +24,7 @@ public class ContactDaoImpl implements ContactDao{
 	}
 	
 	// fields
-	private List<Contact> contacts = new LinkedList<>(); 
+	private List<Contact> contacts = new ArrayList<>();
 		
 	/**
 	 * 어떤 인덱스가 검색, 수정, 삭제할 때 사용 가능한 범위 안에 있는 인덱스인 지를 리턴 
