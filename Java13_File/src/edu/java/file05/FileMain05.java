@@ -30,6 +30,7 @@ public class FileMain05 {
 		){
 			oout.writeObject(p);
 			System.out.println("파일 작성 완료");
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
