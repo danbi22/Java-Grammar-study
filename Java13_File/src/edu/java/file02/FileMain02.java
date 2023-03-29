@@ -12,7 +12,7 @@ public class FileMain02 {
 		// (2) read(byte[] b), write(byte[] b, int off, int len) 사용할 때 복사 시간 측정
 		
 		String origin = "data/ratings.dat"; // 원본 파일 경로, 이름
-		String dest = "data/raatings-copy.dat"; // 복사할 파일 경로, 이름
+		String dest = "data/ratings-copy.dat"; // 복사할 파일 경로, 이름
 		
 		FileInputStream in = null; // 파일 읽기 통로
 		FileOutputStream out = null; // 파일 쓰기 통로
