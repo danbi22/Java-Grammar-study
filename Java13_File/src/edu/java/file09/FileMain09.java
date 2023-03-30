@@ -86,13 +86,13 @@ public class FileMain09 {
 		}
 		
 		
-		// 기존 폴더 삭제: (1) File 객체 생성. (2) 폴더가 있으면, delete() 메서드를 호출.
-		if (newFolder.exists()) {
-			newFolder.delete();
-			System.out.println("폴더 삭제 성공");
-		} else {
-			System.out.println("삭제할 폴더가 없습니다.");
-		}
+//		 기존 폴더 삭제: (1) File 객체 생성. (2) 폴더가 있으면, delete() 메서드를 호출.
+//		if (newFolder.exists()) {
+//			newFolder.delete();
+//			System.out.println("폴더 삭제 성공");
+//		} else {
+//			System.out.println("삭제할 폴더가 없습니다.");
+//		}
 		
 		
 		
