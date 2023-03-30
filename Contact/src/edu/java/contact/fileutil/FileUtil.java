@@ -1,6 +1,13 @@
 package edu.java.contact.fileutil;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 import edu.java.contact.model.Contact;
@@ -25,14 +32,14 @@ public class FileUtil {
 	 * @return 데이터 파일을 저장할 폴더의 File 객체.
 	 */
 	public static File initDataDir() {
-		File data = new File(System.getProperty("user.dir"), DATA_DIR);
-		if (data.exists()) {
+		File folder = new File(System.getProperty("user.dir"), DATA_DIR);
+		if (folder.exists()) {
 			System.out.println("폴더가 이미 있습니다.");
 		} else {
-			data.mkdir();
+			folder.mkdir();
 			System.out.println("폴더를 생성합니다.");
 		}
-		return data;
+		return folder;
 	}
 	
 	/**
@@ -43,7 +50,20 @@ public class FileUtil {
 	 * @param file 연락처 정보가 저장된 파일 경로를 가지고 있는 File 타입 객체
 	 * @return List<Contact>
 	 */
-	
+	public static List<Contact> readDataFromFile(File file) {
+		
+		try(FileInputStream in = new FileInputStream(file);
+				BufferedInputStream bin = new BufferedInputStream(in);
+				ObjectInputStream oin = new ObjectInputStream(bin);
+		){
+		List<Contact> list = (List<Contact>)oin.readObject();
+		return list;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		List<Contact> empty = null;
+		return empty;
+	}
 	
 	
 	/**
@@ -53,6 +73,16 @@ public class FileUtil {
 	 * @param data 파일에 쓸 데이터. Contact 타입을 저장하는 리스트(List<Contact>)
 	 * @param file 데이터 파일(File) 객체
 	 */
+	public static void writeDataToFile(List<Contact> list, File file) {
+		try (FileOutputStream out = new FileOutputStream(DATA_FILE);
+				BufferedOutputStream bout = new BufferedOutputStream(out);
+				ObjectOutputStream oout = new ObjectOutputStream(bout);
+		){
+			oout.writeObject(DATA_FILE);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 	
 	/**
 	 * initData.
@@ -62,9 +92,12 @@ public class FileUtil {
 	 *  @return Contact 타입을 원소로 갖는 리스트(List<Contact>)
 	 */
 	public static List<Contact> initData(){
-		
-		// TODO
-		return null;
+		File file = new File(DATA_DIR, DATA_FILE);
+		if (file.exists()) {
+			return readDataFromFile(file);
+		}
+		List<Contact> empty = new ArrayList<>();
+		return empty;
 	}
 	
 	
