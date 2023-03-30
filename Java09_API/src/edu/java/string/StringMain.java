@@ -59,7 +59,7 @@ public class StringMain {
 		// Ex 4. 아래의 문자열배열에서 대소문자 구별없이 "est"가 포함된 문자열들을 찾아서 출력.
 		System.out.println("\n4번문제");
 		String[] tests = {"TEST", "test", "TeSt", "tEST", "테스트"};
-		System.out.println("test".contains("est")); // CharSequence에는 문자열을 집어 넣으면 된다.	
+		System.out.println(" "+"test".contains("est")); // CharSequence에는 문자열을 집어 넣으면 된다.	
 		for (String s : tests) {
 			if (s.toLowerCase().contains("est")) { // 기본타입에는 클래스가 없어서 가지고 있는 메서드가 없다.
 				System.out.print(s+" ");
@@ -99,5 +99,6 @@ public class StringMain {
 //		System.out.println("month: "+month);
 //		day= Integer.parseInt(date.substring(8, 10));
 //		System.out.println("day: "+day);
+		
 	}
 }
