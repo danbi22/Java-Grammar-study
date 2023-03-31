@@ -23,7 +23,7 @@ public class ContactDaoImpl implements ContactDao{
 	private ContactDaoImpl() {	
 		dataDir = FileUtil.initDataDir(); // 폴더 생성
 		dataFile = new File(FileUtil.DATA_DIR, FileUtil.DATA_FILE); // 파일 생성
-		contacts = FileUtil.initData();
+		contacts = FileUtil.initData(); // 데이터 초기화 - 파일의 내용을 메모리에 로딩
 	}
 	// TODO: ContactDaoImpl에는 연락처 데이터를 변경하는 메서드들이 있음.
 	// -> 연락처 데이터가 변경되는 메서드에서 FileUtil.writeDataToFile() 메서드 호출.
@@ -49,7 +49,7 @@ public class ContactDaoImpl implements ContactDao{
 	// CRUD(Create, Read, Update, Delete) 기능 메서드들:
 	@Override
 	public int create(Contact c) {
-		contacts.add(c);
+		contacts.add(c); // (heap) 메모리에 있는 List에 연락처를 추가
 		FileUtil.writeDataToFile(contacts, dataFile);
 		return 1;
 	}
@@ -87,6 +87,12 @@ public class ContactDaoImpl implements ContactDao{
 		contacts.remove(index);
 		FileUtil.writeDataToFile(contacts, dataFile);		
 		return 1;
+	}
+	
+	public void empty() {
+		if (contacts.get(0) == null) {
+			System.out.println("저장된 연락처가 없습니다.");
+		}
 	}
 
 }

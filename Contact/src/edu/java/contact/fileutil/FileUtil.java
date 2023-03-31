@@ -32,11 +32,11 @@ public class FileUtil {
 	 * @return 데이터 파일을 저장할 폴더의 File 객체.
 	 */
 	public static File initDataDir() {
-		File folder = new File(System.getProperty("user.dir"), DATA_DIR);
-		if (folder.exists()) {
+		File folder = new File(DATA_DIR);
+		if (folder.exists()) { //폴더가 존재하면
 			System.out.println("폴더가 이미 있습니다.");
-		} else {
-			folder.mkdir();
+		} else {  // 폴더가 존재하지 않으면
+			folder.mkdir(); 
 			System.out.println("폴더를 생성합니다.");
 		}
 		return folder;
@@ -61,7 +61,7 @@ public class FileUtil {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		List<Contact> empty = null;
+		List<Contact> empty = new ArrayList<>();
 		return empty;
 	}
 	
@@ -74,11 +74,11 @@ public class FileUtil {
 	 * @param file 데이터 파일(File) 객체
 	 */
 	public static void writeDataToFile(List<Contact> list, File file) {
-		try (FileOutputStream out = new FileOutputStream(DATA_FILE);
+		try (FileOutputStream out = new FileOutputStream(file);
 				BufferedOutputStream bout = new BufferedOutputStream(out);
 				ObjectOutputStream oout = new ObjectOutputStream(bout);
 		){
-			oout.writeObject(DATA_FILE);
+			oout.writeObject(list);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
