@@ -62,7 +62,7 @@ public class ContactDaoImpl implements ContactDao{
 	@Override
 	public Contact read(int index) {
 		if (isValidIndex(index)) {
-			return FileUtil.readDataFromFile(dataFile).get(index);
+			return contacts.get(index);
 		} else {
 			return null;
 		}
