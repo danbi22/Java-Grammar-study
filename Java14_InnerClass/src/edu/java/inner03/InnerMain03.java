@@ -17,4 +17,6 @@ public class InnerMain03 {
 		// 4. 버튼 클릭
 		btnOpen.click();
 	}
+	
+	
 }
