@@ -40,11 +40,12 @@ public class LambdaMain03 {
 																			.sum();
 //		employees.stream().filter(x -> x.getEmpName().equals("사원")).filter(x -> x.getSalary()).map(x -> 사원직급 += x));
 		System.out.println("사원들의 평균 임금" + employeesSalary+"만원");
+		
 		// 5. 직급이 사원인 직원들의 급여의 평균을 출력.
 		
 		
 		// 6. 급여가 400 이상인 직원들의 정보를 한 줄에 한 명씩 출력
-		List<Employee> over400 = employees.stream()
+		String over400 = employees.stream()
 																.filter(x -> x.getSalary() >= 400)
 																.forEach(System.out::println);
 		System.out.println(over400);
