@@ -45,10 +45,10 @@ public class LambdaMain03 {
 		
 		
 		// 6. 급여가 400 이상인 직원들의 정보를 한 줄에 한 명씩 출력
-		String over400 = employees.stream()
-																.filter(x -> x.getSalary() >= 400)
-																.forEach(System.out::println);
-		System.out.println(over400);
+		employees.stream()
+		.filter(x -> x.getSalary() >= 400)
+		.forEach(System.out::println);
+		
 		
 		// 7. 개발1팀 직원들의 급여를 10% 인상하고, 그 직원들의 급여 평균을 계산하고 출력.
 		Double deptsalary = 0.0;
