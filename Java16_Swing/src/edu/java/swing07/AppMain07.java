@@ -1,17 +1,18 @@
 package edu.java.swing07;
 
 import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JTextField;
-import javax.swing.JLabel;
-import javax.swing.JButton;
-import javax.swing.JScrollPane;
-import javax.swing.SwingConstants;
 import java.awt.Font;
-import javax.swing.JTextArea;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class AppMain07 {
 	// JTable에서 사용할 컬럼 이름
@@ -28,7 +29,10 @@ public class AppMain07 {
 	private JScrollPane scrollPane;
 	private JButton btnDelete;
 	private JButton btnInput;
-
+	private Integer koreanScore = 0;
+	private Integer englishScore = 0;
+	private Integer mathScore = 0;
+	Score score = new Score(koreanScore, englishScore, mathScore);	
 	/**
 	 * Launch the application.
 	 */
@@ -41,6 +45,7 @@ public class AppMain07 {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+			
 			}
 		});
 	}
@@ -83,11 +88,28 @@ public class AppMain07 {
 		frame.getContentPane().add(lblKorean);
 		
 		btnInput = new JButton("입력");
+		btnInput.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				mathScore = Integer.parseInt(textMath.getText());
+				koreanScore = Integer.parseInt(textKorean.getText());
+				englishScore = Integer.parseInt(textEnglish.getText());
+				textEnglish.setText("");
+				textKorean.setText("");
+				textMath.setText("");
+				Object[] row = {koreanScore, englishScore, mathScore, score.getTotal(koreanScore, englishScore, mathScore), score.getMean(koreanScore, englishScore, mathScore)};
+				model.addRow(row);
+			}
+		});
 		btnInput.setFont(new Font("D2Coding", Font.PLAIN, 25));
 		btnInput.setBounds(75, 303, 135, 78);
 		frame.getContentPane().add(btnInput);
 		
 		btnDelete = new JButton("삭제");
+		btnDelete.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 		btnDelete.setFont(new Font("D2Coding", Font.PLAIN, 25));
 		btnDelete.setBounds(256, 303, 135, 78);
 		frame.getContentPane().add(btnDelete);
