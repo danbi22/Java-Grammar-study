@@ -61,13 +61,13 @@ public class ThreadMain02 {
 		});
 		// 람다 표현식을 사용한 쓰레드 객체 생성
 		
-		Thread th3 = new Thread(new Runnable(() -> {
-			for (int i = 0; i < 100; i++) {
-				System.out.println(i + " -Lambda");
-				
-				Thread.sleep(10);
-			}
-		})
+//		Thread th3 = new Thread(new Runnable(() -> {
+//			for (int i = 0; i < 100; i++) {
+//				System.out.println(i + " -Lambda");
+//				
+//				Thread.sleep(10);
+//			}
+//		})
 	
 		long start = System.currentTimeMillis();
 		// (4) 쓰래드 객체의 start 메서드 호출
