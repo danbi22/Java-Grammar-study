@@ -1,6 +1,8 @@
 package post02;
 
 import java.time.LocalDateTime;
+import java.util.LinkedList;
+import java.util.List;
 
 public class PostDaoImpl implements postDao {
 	// singleton step 1
@@ -20,72 +22,56 @@ public class PostDaoImpl implements postDao {
 		}
 		return instance;
 	}
+
 	
+	// field
+	List<PostModel> posts = new LinkedList<>();
+
 	
-	
-	//field
-	int MAX_LENGTH = 5;
-	postModel[] postArray = new postModel[MAX_LENGTH];
-	int count = 0;
-	
-	
+	//	method
 	@Override
-	public int saveWriting(postModel p) {
-		if (isMemoryAvailable()) {
-			postArray[count] = p;
-			LocalDateTime now = LocalDateTime.now();
-			postArray[count].setCreatedTime(now);
-			count++;
-			return 1;
-		}
-		return 0;
+	public int saveWriting(PostModel p) {
+		LocalDateTime now = LocalDateTime.now();
+		p.setCreatedTime(now);
+	
+		posts.add(p);
+	
+		return 1;
 	}
+	
 	@Override
 	public void viewAll() {
-		for (int i = 0; i < count; i++) {
-			System.out.println(postArray[i]);
-		}
-		
+		for (PostModel p : posts)
+		System.out.println(posts);
 	}
+	
 	@Override
 	public void viewAt(int index) {
-		System.out.println(postArray[index]);
+		System.out.println(posts.get(index));
 	}
+	
 	@Override
-	public int update(postModel model, int index) {
+	public int update(PostModel model, int index) {
 		if (!isValidIndex(index)) {
 			return 0;
 		}
 			
 		LocalDateTime now = LocalDateTime.now();
-		postArray[index].setTitle(model.getTitle());
-		postArray[index].setContent(model.getContent());
-		postArray[index].setAuthor(model.getAuthor());
-		postArray[index].setModifiedTime(now);
-			
+		model.setModifiedTime(now);
+		
+		posts.add(index, model);
+		
 		return 1;
 	}
+	
 	@Override
 	public int delete(int index) {
 		if (!isValidIndex(index)) {
 			return 0;
 		}
-		for (int i = index; i < count - 1; i++) {
-			postArray[i] = postArray[i+1];
-			
-		}
-		postArray[count - 1] = null;
-		count--;
+		posts.remove(index);
 		
 		return 1;
-	}
-	
-	/**
-	 * 포스트 배열에 새로운 post 객체를 저장할 수 있는 지를 리턴
-	 * @return 배열에 빈 공간이 있으면 true, 그렇지 않으면 false를 리턴
-	 */
-	public boolean isMemoryAvailable() {
-		return count < MAX_LENGTH;
 	}
 	
 	/**
@@ -94,6 +80,6 @@ public class PostDaoImpl implements postDao {
 	 * @return 사용가능한 인덱스는 true, 그렇지 않으면 false  
 	 */
 	public boolean isValidIndex(int index) {
-		return index >= 0 && index < count;
+		return index >= 0 && index < posts.size();
 	}
 }

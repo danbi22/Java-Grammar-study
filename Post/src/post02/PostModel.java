@@ -2,7 +2,7 @@ package post02;
 
 import java.time.LocalDateTime;
 
-public class postModel {
+public class PostModel {
 	private int pid;
 	private String title;
 	private String content;
@@ -10,9 +10,9 @@ public class postModel {
 	private LocalDateTime createdTime;
 	private LocalDateTime modifiedTime;
 	
-	public postModel() {}
+	public PostModel() {}
 
-	public postModel(int pid, String title, String content, String author, LocalDateTime createdTime, LocalDateTime modifiedTime) {
+	public PostModel(int pid, String title, String content, String author, LocalDateTime createdTime, LocalDateTime modifiedTime) {
 		this.pid = pid;
 		this.title = title;
 		this.content = content;

@@ -85,7 +85,7 @@ public class postMain {
 		System.out.println("작성자를 입력해주세요");
 		String author = sc.nextLine();
 		
-		postModel model = new postModel(index, title, content, author, null, null);
+		PostModel model = new PostModel(index, title, content, author, null, null);
 		int result = dao.update(model, index);
 		
 		if (result == 0) {
@@ -118,11 +118,6 @@ public class postMain {
 
 
 	private void write() {
-		if (!dao.isMemoryAvailable()) {
-			System.out.println("저장 공간이 부족합니다.");
-			return;
-		}
-		
 		System.out.println("----- 글 작성하기 -----");
 		System.out.println("제목을 입력해주세요");
 		String title = sc.nextLine();
@@ -131,7 +126,7 @@ public class postMain {
 		System.out.println("작성자를 입력해주세요");
 		String author = sc.nextLine();
 		
-		postModel model = new postModel(0, title, content, author, null, null);
+		PostModel model = new PostModel(0, title, content, author, null, null);
 		int result = dao.saveWriting(model);
 		
 		if (result == 0) {
@@ -162,5 +157,5 @@ public class postMain {
 			}
 		}
 	}
-
+	
 }

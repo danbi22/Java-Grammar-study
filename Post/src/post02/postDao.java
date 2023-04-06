@@ -4,10 +4,10 @@ public interface postDao {
 	
 	/**
 	 * 글을 저장하는 메서드, 첫 작성 시간도 함께 저장됨
-	 * @param postModel 
+	 * @param PostModel 
 	 * @return int 글저장을 성공하면 1을 리턴, 실패하면 0을 리턴
 	 */
-	int saveWriting(postModel model);
+	int saveWriting(PostModel model);
 	
 	/**
 	 * 글 목록(제목)을 불러오는 메서드
@@ -22,11 +22,11 @@ public interface postDao {
 	
 	/**
 	 * 수정 전 글을 보여주고 글을 수정한 뒤 수정 시간을 저장함
-	 * @param postModel model
+	 * @param PostModel model
 	 * @param int index
 	 * @return int 글 수정이 성공하면 1을 리턴, 실패하면 0을 리턴
 	 */
-	int update(postModel model, int index);
+	int update(PostModel model, int index);
 	
 	/**
 	 * 글을 삭제하는 기능
