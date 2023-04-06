@@ -6,12 +6,14 @@ import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionListener;
+import java.security.PublicKey;
 import java.awt.event.ActionEvent;
 
 public class AppMain07 {
@@ -29,10 +31,10 @@ public class AppMain07 {
 	private JScrollPane scrollPane;
 	private JButton btnDelete;
 	private JButton btnInput;
-	private Integer koreanScore = 0;
-	private Integer englishScore = 0;
-	private Integer mathScore = 0;
-	Score score = new Score(koreanScore, englishScore, mathScore);	
+	int korean = 0;
+	int english = 0;
+	int math = 0;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -89,7 +91,10 @@ public class AppMain07 {
 		
 		btnInput = new JButton("입력");
 		btnInput.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
+				insertScoreToTable();
+				/*
 				mathScore = Integer.parseInt(textMath.getText());
 				koreanScore = Integer.parseInt(textKorean.getText());
 				englishScore = Integer.parseInt(textEnglish.getText());
@@ -98,6 +103,7 @@ public class AppMain07 {
 				textMath.setText("");
 				Object[] row = {koreanScore, englishScore, mathScore, score.getTotal(koreanScore, englishScore, mathScore), score.getMean(koreanScore, englishScore, mathScore)};
 				model.addRow(row);
+				 */
 			}
 		});
 		btnInput.setFont(new Font("D2Coding", Font.PLAIN, 25));
@@ -107,7 +113,7 @@ public class AppMain07 {
 		btnDelete = new JButton("삭제");
 		btnDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				deleteRowFromTable();
 			}
 		});
 		btnDelete.setFont(new Font("D2Coding", Font.PLAIN, 25));
@@ -135,5 +141,82 @@ public class AppMain07 {
 		model = new DefaultTableModel(data, COLUMN_NAMES);
 		table.setModel(model);
 		scrollPane.setViewportView(table);
+	}
+
+	private void deleteRowFromTable() {
+		// 1. 테이블에서 삭제하기 위해 선택된 행의 인덱스를 찾음
+		int index = table.getSelectedRow();
+		if (index == -1) { // 테이블에서 아무 행도 선택되지 않은 경우.
+			JOptionPane.showMessageDialog(
+					frame, 
+					"테이블에서 삭제할 행을 먼저 선택하세요", 
+					"경고", 
+					JOptionPane.WARNING_MESSAGE);
+			return; // 메서드 종료
+		}
+		
+		// 2. 해당 인덱스의 행을 테이블 모델에서 삭제
+		int confirm = JOptionPane.showConfirmDialog(
+				frame, 
+				index + " 인덱스 행을 정말 삭제하시겠습니까?", 
+				"삭제 확인", 
+				JOptionPane.YES_NO_OPTION);
+		if (confirm == JOptionPane.YES_OPTION) {
+			model.removeRow(index);
+		}
+	}
+
+	private void insertScoreToTable() {
+		// 1. JTextField에서 3과목의 점수를 읽는다.
+		try {
+			korean = Integer.parseInt(textKorean.getText());
+			english = Integer.parseInt(textEnglish.getText());
+			math = Integer.parseInt(textMath.getText());
+			if (overScore() == 1) {
+				return;
+			}
+			
+		} catch (NumberFormatException e) {
+			JOptionPane.showMessageDialog(
+					frame, 
+					"정수를 입력하세요. " + e.getMessage(), 
+					"입력 에러", 
+					JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+		
+		// 2. Score 타입 객체 생성
+		Score score = new Score(korean, english, math);
+		
+		// 3. JTable에 행(row)을 추가
+		Object[] row = {
+				score.getKorean(),
+				score.getEnglish(),
+				score.getMath(),
+				score.getTotal(),
+				score.getMean()
+		};
+		model.addRow(row);
+		
+		// 모든 JTextField의 입력 내용을 지움
+		clearAllTextFields();
+	}
+	
+	private int overScore() {
+		if (korean > 100 || english > 100 || math > 100) {
+			JOptionPane.showMessageDialog(
+					frame, 
+					"점수는 100점이 넘어가면 안됩니다.", 
+					"점수 확인", 
+					JOptionPane.ERROR_MESSAGE);
+			return 1;
+		}
+		return 0;
+	}
+
+	private void clearAllTextFields() {
+		textKorean.setText("");
+		textEnglish.setText("");
+		textMath.setText("");
 	}
 }

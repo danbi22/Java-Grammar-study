@@ -43,13 +43,13 @@ public class Score {
 	}
 	
 	// 세 과목의 총점을 int 타입으로 리턴하는 메서드. getTotal
-	public int getTotal(int korean, int english, int math) {
+	public int getTotal() {
 		return korean + english + math;
 	}
 	
 	// TODO: 세 과목의 평균을 double 타입으로 리턴하는 메서드. getMean
-	public double getMean(int korean, int english, int math) {
-		double result = getTotal(korean, english, math) / 3.0;
+	public double getMean() {
+		double result = getTotal() / 3.0;
 		return result;
 	}
 	
