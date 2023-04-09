@@ -1,4 +1,4 @@
-package post02;
+package post2;
 
 public interface postDao {
 	
