@@ -67,7 +67,7 @@ public class PostDaoImpl implements postDao {
 		LocalDateTime now = LocalDateTime.now();
 		model.setModifiedTime(now);
 		
-		posts.add(index, model);
+		posts.set(index, model);
 		PostFile.writeToFile(posts);
 		
 		return 1;
