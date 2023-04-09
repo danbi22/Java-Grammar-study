@@ -1,4 +1,4 @@
-package post02;
+package post2;
 
 import java.util.Scanner;
 //import post.Menu;
@@ -53,7 +53,6 @@ public class postMain {
 		
 		if (!dao.isValidIndex(index)) {
 			System.out.println("인덱스 번호를 확인하세요");
-			delete();
 			return;
 		}
 		
