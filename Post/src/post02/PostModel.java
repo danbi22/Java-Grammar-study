@@ -1,8 +1,9 @@
-package post02;
+package post2;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public class PostModel {
+public class PostModel implements Serializable{
 	private int pid;
 	private String title;
 	private String content;
