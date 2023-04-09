@@ -1,17 +1,24 @@
-package post02;
+package post2;
 
 import java.time.LocalDateTime;
 import java.util.LinkedList;
 import java.util.List;
 
 public class PostDaoImpl implements postDao {
+	// field
+		List<PostModel> posts = new LinkedList<>();
+		
 	// singleton step 1
 	// private로 숨기고 static메모리에 띄운 PostDaoImpl 타입의 instance라는 참조변수생성 null로 초기화
 	private static PostDaoImpl instance = null;
 	
 	// singleton step 2
 	// private로 숨긴 기본생성자 생성 다른 곳에서 생성 불가능.
-	private PostDaoImpl() {}
+	private PostDaoImpl() {
+		PostFile.makeFolder();
+		PostFile.makeFile();
+		posts = PostFile.readFile();
+	}
 	
 	// singleton step 3
 	// 어디서든 이 메서드 만을 이용해서 객체를 생성할 수 있으나
@@ -24,8 +31,8 @@ public class PostDaoImpl implements postDao {
 	}
 
 	
-	// field
-	List<PostModel> posts = new LinkedList<>();
+	
+	
 
 	
 	//	method
@@ -35,6 +42,7 @@ public class PostDaoImpl implements postDao {
 		p.setCreatedTime(now);
 	
 		posts.add(p);
+		PostFile.writeToFile(posts);
 	
 		return 1;
 	}
@@ -60,6 +68,7 @@ public class PostDaoImpl implements postDao {
 		model.setModifiedTime(now);
 		
 		posts.add(index, model);
+		PostFile.writeToFile(posts);
 		
 		return 1;
 	}
@@ -70,6 +79,7 @@ public class PostDaoImpl implements postDao {
 			return 0;
 		}
 		posts.remove(index);
+		PostFile.writeToFile(posts);
 		
 		return 1;
 	}
