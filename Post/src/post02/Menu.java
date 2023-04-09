@@ -1,4 +1,5 @@
-package post02;
+package post2;
+
 
 public enum Menu {
 	QUIT, CREATE, READ_ALL, READ_AT, UPDATE, DELETE, UNKNOWN;
