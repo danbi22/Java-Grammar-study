@@ -8,7 +8,17 @@ import java.io.Serializable;
 // DTO(Data Transfer Object): 데이터를 전달(메서드 아규먼트, 리턴 값)할 때 사용되는 객체.
 
 public class Contact implements Serializable{
-	private int cid;
+	
+	// 오라클 DB 테이블 이름과 컬럼 이름들을 상수로 정의.
+	public interface Entity{
+		String TBL_NAME = "CONTACTS";
+		String COL_CID = "CID"; // pk
+		String COL_NAME = "NAME"; // nn
+		String COL_PHONE = "PHONE"; // nn
+		String COL_EMAIL = "EMAIL"; 
+	}
+	// field
+	private int cid; // 테이블의 pk
 	private String name;
 	private String phone;
 	private String email;
