@@ -6,8 +6,8 @@ public class Recorder {
 		String COL_ID = "id";
 		String COL_NAME = "name";
 		String COL_INIT = "initialValue";
-		String COL_FIN = "finalValue";
 		String COL_GROW = "growthRate";
+		String COL_FIN = "finalValue";
 		String COL_MEMO = "memo";
 	}
 	
@@ -15,8 +15,8 @@ public class Recorder {
 	private int id;
 	private String name;
 	private double initialValue;
-	private double finalValue;
 	private double growthRate;
+	private double finalValue;
 	private String memo;
 	
 	// constructor
