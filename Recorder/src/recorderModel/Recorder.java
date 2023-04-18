@@ -22,8 +22,15 @@ public class Recorder {
 	// constructor
 	public Recorder() {}
 
-	public Recorder(int id, String name, double initialValue, double finalValue, double growthRate, String memo) {
-		super();
+	public Recorder(String name, double initialValue, double finalValue, String memo) {
+		this.name = name;
+		this.initialValue = initialValue;
+		this.growthRate = (finalValue - initialValue) / initialValue * 100;
+		this.finalValue = finalValue;
+		this.memo = memo;
+	}
+	
+	public Recorder(int id, String name, double initialValue, double growthRate, double finalValue, String memo) {
 		this.id = id;
 		this.name = name;
 		this.initialValue = initialValue;

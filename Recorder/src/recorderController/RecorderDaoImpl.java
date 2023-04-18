@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 import oracle.jdbc.OracleDriver;
@@ -57,6 +58,7 @@ public class RecorderDaoImpl implements RecorderDao{
 			conn = getConnection();
 			
 			stmt = conn.prepareStatement(SQL_INSERT);
+			System.out.println(SQL_INSERT);
 			stmt.setString(1, recorder.getName());
 			stmt.setDouble(2, recorder.getInitialValue());
 			stmt.setDouble(3, recorder.getGrowthRate());
@@ -70,18 +72,18 @@ public class RecorderDaoImpl implements RecorderDao{
 		} finally {
 			try {
 				closeResources(conn, stmt);
-			} catch (SQLException e) {
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
 		return result;
 	}
 
-	private static final String SQL_SELECT_ALL = "select * from recorder order by id";
+	private final String SQL_SELECT_ALL = "select * from recorder order by id";
 	
 	@Override
 	public List<Recorder> read() {
-		List<Recorder> list = null;
+		List<Recorder> list = new ArrayList<>();
 		
 		Connection conn = null;
 		PreparedStatement stmt = null;
@@ -89,7 +91,9 @@ public class RecorderDaoImpl implements RecorderDao{
 		
 		try {
 			conn = getConnection();
+			System.out.println(SQL_SELECT_ALL);
 			stmt = conn.prepareStatement(SQL_SELECT_ALL);
+			
 			rs = stmt.executeQuery();
 			while(rs.next()) {
 				int id = rs.getInt(COL_ID);
@@ -99,7 +103,7 @@ public class RecorderDaoImpl implements RecorderDao{
 				double finalValue = rs.getDouble(COL_FIN);
 				String memo = rs.getString(COL_MEMO);
 				
-				Recorder recorder = new Recorder(id, name, initialValue, finalValue, growthRate, memo);
+				Recorder recorder = new Recorder(id, name, initialValue, growthRate, finalValue, memo);
 				list.add(recorder);
 			}
 		} catch (SQLException e) {
@@ -115,15 +119,68 @@ public class RecorderDaoImpl implements RecorderDao{
 		return list;
 	}
 
+	private final String SQL_UPDATE = String.format("update %s set %s = ?, %s = ?, %s = ?, %s = ?, %s = ? where %s = ?", 
+			TBL_NAME, COL_NAME, COL_INIT, COL_GROW, COL_FIN, COL_MEMO, COL_ID);
+	
 	@Override
 	public int update(Recorder recorder) {
+		int result = 0;
+		Connection conn = null;
+		PreparedStatement stmt = null;
 		
-		return 0;
+		try {
+			conn = getConnection();
+			System.out.println(SQL_UPDATE);
+			stmt = conn.prepareStatement(SQL_UPDATE);
+			stmt.setString(1, recorder.getName());
+			stmt.setDouble(2, recorder.getInitialValue());
+			stmt.setDouble(3, recorder.getGrowthRate());
+			stmt.setDouble(4, recorder.getFinalValue());
+			stmt.setString(5, recorder.getMemo());
+			stmt.setInt(6, recorder.getId());
+			
+			result = stmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				closeResources(conn, stmt);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return result;
 	}
 
+	private final String SQL_DELETE = String.format("delete from %s where %s = ?", TBL_NAME, COL_ID);
+	
 	@Override
 	public int delete(Integer id) {
-		// TODO Auto-generated method stub
+		int result = 0;
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		
+		try {
+			conn = getConnection();
+			System.out.println(SQL_DELETE);
+			
+			stmt = conn.prepareStatement(SQL_DELETE);
+			stmt.setInt(1, id);
+			
+			result = stmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				closeResources(conn, stmt);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		
 		return 0;
 	}
 	
